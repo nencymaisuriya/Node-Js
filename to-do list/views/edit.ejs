@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e99696;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #dc3545;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        a:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form action="/edit/<%= task.id %>" method="POST">
+        <input type="text" name="task" value="<%= task.name %>" required>
+        <button type="submit">Update</button>
+    </form>
+    <a href="/tasks">Cancel</a>   
+</body>
+</html>

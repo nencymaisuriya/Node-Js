@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f39595;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            padding: 10px;
+            margin: 10px auto;
+            width: 50%;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <h2>Current Tasks</h2>
+    <ul>
+        <% currentTasks.forEach(task => { %>
+            <li>
+                <span><%= task.name %></span>
+                <div>
+                    <form action="/complete/<%= task.id %>" method="POST" style="display:inline;">
+                        <button type="submit">Complete</button>
+                    </form>
+                    <form action="/edit/<%= task.id %>" method="GET" style="display:inline;">
+                        <button type="submit">Edit</button>
+                    </form>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
