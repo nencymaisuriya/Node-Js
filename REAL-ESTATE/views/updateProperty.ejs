@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Property</title>
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+    
+            body {
+                font-family: 'Poppins', sans-serif;
+                background: #f5f7fa;
+                color: #333;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+            
+            
+            .container {
+                max-width: 600px;
+                width: 90%;
+                padding: 20px;
+            }
+            
+           
+            .form-container {
+                background: #ffffff;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+                transition: 0.3s ease-in-out;
+            }
+            
+           
+            h2 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 20px;
+                font-weight: bold;
+            }
+            
+            
+            .form-label {
+                font-weight: bold;
+                color: #555;
+            }
+            
+         
+            .form-control {
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                padding: 12px;
+                font-size: 16px;
+                width: 100%;
+                transition: 0.3s;
+            }
+            
+           
+            .form-control:focus {
+                border-color: #007bff;
+                box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.5);
+            }
+            
+           
+            select.form-control {
+                appearance: none;
+                background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMiAxMiIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0Ij4gPHBhdGggZmlsbD0iIzg4OCIgdHJhbnNmb3JtPSJyb3RhdGUoOTAsNi41LDMuNSkiIGQ9Ik02LjUsMS4yNWw0LjUsNC41LTEuNSAxLjVMMiAwIDYuNSAwWiIvPjwvc3ZnPg==') no-repeat right 10px center;
+                background-size: 14px;
+                padding-right: 30px;
+            }
+            
+           
+            .image-preview {
+                display: block;
+                margin-top: 10px;
+                border-radius: 6px;
+                max-width: 100%;
+                height: auto;
+                border: 1px solid #ddd;
+            }
+            
+          
+            .btn-primary {
+                background: linear-gradient(45deg, #007bff, #0056b3);
+                border: none;
+                padding: 12px;
+                margin: auto;
+                font-size: 18px;
+                border-radius: 8px;
+                color: white;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: 0.3s ease-in-out;
+                display: block;
+                text-align: center;
+            }
+            
+            .btn-primary:hover {
+                background: linear-gradient(45deg, #0056b3, #004494);
+            }
+            
+            @media (max-width: 600px) {
+                .container {
+                    max-width: 100%;
+                    padding: 15px;
+                }
+            }
+            
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form action="/update/<%= property._id %>" method="POST" enctype="multipart/form-data" class="form-container">
+            <h2>Update Property</h2>
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" value="<%= property.title %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" name="price" value="<%= property.price %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" name="location" value="<%= property.location %>" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Type</label>
+                <select class="form-control" name="type">
+                    <option value="House" <%= property.type === "House" ? "selected" : "" %>>House</option>
+                    <option value="Apartment" <%= property.type === "Apartment" ? "selected" : "" %>>Apartment</option>
+                    <option value="Villa" <%= property.type === "Villa" ? "selected" : "" %>>Villa</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload New Image</label>
+                <input type="file" class="form-control" name="image">
+                <p class="mt-2">Current Image:</p>
+                <img src="<%= property.image %>" class="image-preview" width="100">
+            </div>
+
+            <button type="submit" class="btn-primary">Update Property</button>
+        </form>
+    </div>
+
+</body>
+</html>
